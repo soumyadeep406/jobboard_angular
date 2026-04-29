@@ -1,0 +1,32 @@
+<h2>My Applied Jobs</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Job Title</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="j in appliedJobs">
+                <td><strong>{{j.title}}</strong></td>
+                <td>
+                    <span class="badge" 
+                          ng-class="{
+                              'bg-warning': j.status == 'pending',
+                              'bg-success': j.status == 'shortlisted' || j.status == 'hired',
+                              'bg-danger': j.status == 'rejected'
+                          }">
+                        {{j.status | uppercase}}
+                    </span>
+                </td>
+            </tr>
+            <tr ng-if="appliedJobs.length === 0">
+                <td colspan="2" class="text-center text-muted">You haven't applied to any jobs yet.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<a href="#!/seeker-dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>

@@ -1,0 +1,99 @@
+<div ng-include="'views/admin/admin-header.html'"></div>
+<h2 class="admin-title">All Users</h2>
+
+<div class="admin-table-wrapper">
+
+    <table class="admin-table">
+
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr ng-repeat="u in users | filter:filterUsers">
+
+                <!-- USER INFO -->
+                <td class="user-info">
+                    <div class="user-avatar">
+                        {{u.name.charAt(0) | uppercase}}
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name">{{u.name}}</div>
+                        <div class="user-email">{{u.email}}</div>
+                    </div>
+                </td>
+
+                <!-- ROLE BADGE -->
+                <td>
+                    <span class="role-badge"
+                          ng-class="{
+                              'role-admin': u.role=='admin',
+                              'role-recruiter': u.role=='recruiter',
+                              'role-seeker': u.role=='seeker'
+                          }">
+                        {{u.role | uppercase}}
+                    </span>
+                </td>
+
+                <!-- STATUS BADGE -->
+                <td>
+                    <span class="status-badge"
+                          ng-class="{
+                              'status-active': u.status=='active',
+                              'status-blocked': u.status=='blocked'
+                          }">
+                        {{u.status | uppercase}}
+                    </span>
+                </td>
+
+                <!-- ACTION -->
+                <td class="text-center">
+
+                    <button 
+                        ng-if="u.status!='blocked'" 
+                        ng-click="blockUser(u.user_id)"
+                        class="btn-block">
+                        Block
+                    </button>
+
+                    <span ng-if="u.status=='blocked'" class="blocked-text">
+                        Blocked
+                    </span>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div class="pagination-container" ng-if="userTotalPages > 1">
+
+    <button ng-click="prevUserPage()" 
+            ng-disabled="userCurrentPage == 1">
+        Previous
+    </button>
+
+    <span>
+        Page {{userCurrentPage}} of {{userTotalPages}}
+    </span>
+
+    <button ng-click="nextUserPage()" 
+            ng-disabled="userCurrentPage == userTotalPages">
+        Next
+    </button>
+
+</div>
+
+    <div ng-if="users.length == 0" class="empty-state">
+        No users found.
+    </div>
+
+</div>

@@ -1,0 +1,96 @@
+<div ng-include="'views/admin/admin-header.html'"></div>
+<h2 class="admin-title">Recruiter Approvals</h2>
+
+<div class="admin-table-wrapper">
+
+    <table class="admin-table">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th style="text-align:center;">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr ng-repeat="r in recruiters">
+
+                <td>{{r.name}}</td>
+
+                <td class="email-cell">
+                    {{r.email}}
+                </td>
+
+                <!-- STATUS BADGE -->
+                <td>
+                    <span class="status-badge"
+                          ng-class="{
+                              'status-pending': r.status=='pending',
+                              'status-approved': r.status=='approved',
+                              'status-rejected': r.status=='rejected'
+                          }">
+                        {{r.status | uppercase}}
+                    </span>
+                </td>
+
+                <!-- ACTION BUTTONS -->
+                <td style="text-align:center;">
+
+                    <button 
+                        ng-if="r.status=='pending'" 
+                        ng-click="approveRecruiter(r.user_id)"
+                        class="btn-approve">
+                        Approve
+                    </button>
+
+                    <button 
+                        ng-if="r.status=='pending'" 
+                        ng-click="rejectRecruiter(r.user_id)"
+                        class="btn-reject">
+                        Reject
+                    </button>
+
+                    <span ng-if="r.status!='pending'" class="action-complete">
+                        Action Completed
+                    </span>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <!-- EMPTY STATE -->
+    <div ng-if="recruiters.length == 0" class="empty-state">
+        No recruiter requests at the moment.
+    </div>
+
+    <!-- ✅ FIXED PAGINATION -->
+    <div class="pagination-container" ng-if="recruiterTotalPages > 1">
+
+        <button 
+            class="btn-pagination"
+            ng-click="prevRecruiterPage()" 
+            ng-disabled="recruiterCurrentPage == 1">
+            Previous
+        </button>
+
+        <span class="page-info">
+            Page {{recruiterCurrentPage}} of {{recruiterTotalPages}}
+        </span>
+
+        <button 
+            class="btn-pagination"
+            ng-click="nextRecruiterPage()" 
+            ng-disabled="recruiterCurrentPage == recruiterTotalPages">
+            Next
+        </button>
+
+    </div>
+
+</div>

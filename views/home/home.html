@@ -1,0 +1,49 @@
+  <!-- ===== SEARCH SECTION ===== -->
+
+    <div class="search-section">
+
+        <h2 class="search-title">Find Your Dream Job</h2>
+
+        <div class="search-bar">
+
+            <input 
+                type="text"
+                ng-model="search.skill"
+                placeholder="Skill (e.g. PHP)"
+                class="netflix-input">
+
+            <input 
+                type="text"
+                ng-model="search.location"
+                placeholder="Location"
+                class="netflix-input">
+
+            <button 
+                ng-click="searchJobs()"
+                class="btn-update">
+                Search
+            </button>
+
+        </div>
+
+    </div>
+
+    <hr style="margin:40px 0; border-color:#222;">
+
+    <!-- ===== JOB LAYOUT ===== -->
+
+    <div class="job-layout">
+
+        <!-- LEFT: JOB LIST -->
+        <div class="job-list-panel">
+            <ng-include src="'views/home/job-list.html'"></ng-include>
+        </div>
+
+        <!-- RIGHT: JOB DETAILS -->
+        <div class="job-detail-panel">
+            <ng-include src="'views/home/job-detail.html'"></ng-include>
+        </div>
+
+    </div>
+
+

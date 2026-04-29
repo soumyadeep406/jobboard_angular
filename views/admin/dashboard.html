@@ -1,0 +1,123 @@
+
+<div ng-include="'views/admin/admin-header.html'"></div>
+<!-- FIXED ADMIN NAVBAR -->
+
+
+<hr class="admin-divider">
+
+<!-- DASHBOARD CARDS -->
+<div class="dashboard-cards">
+
+    <div class="dashboard-card users-card">
+        <h3>Total Users</h3>
+        <p class="card-number">{{reports.totalUsers}}</p>
+    </div>
+
+    <div class="dashboard-card jobs-card">
+        <h3>Total Jobs</h3>
+        <p class="card-number">{{reports.totalJobs}}</p>
+    </div>
+
+    <div class="dashboard-card applications-card">
+        <h3>Total Applications</h3>
+        <p class="card-number">{{reports.totalApplications}}</p>
+    </div>
+
+    <div class="dashboard-card recruiters-card">
+        <h3>Total Recruiters</h3>
+        <p class="card-number">{{reports.totalRecruiters}}</p>
+    </div>
+
+</div>
+
+<h2>Admin Analytics</h2>
+
+<select id="filter">
+<option value="week">Weekly</option>
+<option value="month">Monthly</option>
+<option value="year">Yearly</option>
+</select>
+
+<div style="width:100%;height:400px;margin-top:20px;">
+    <canvas id="adminChart"></canvas>
+</div>
+<h3>Filter Reports</h3>
+
+<div class="report-filter">
+
+<label>From:</label>
+<input type="date" ng-model="fromDate">
+<input type="date" ng-model="toDate">
+
+<div class="report-buttons"><button ng-click="applyFilter()" class="report-btn">Apply Filter</button></div>
+
+</div>
+
+<h3 style="margin-top:40px;">Reports</h3>
+
+<div class="report-buttons">
+
+<button class="report-btn" ng-click="viewUsers()">View Jobseekers</button>
+<button class="report-btn" ng-click="download('users')">Download Jobseekers</button>
+
+<button class="report-btn" ng-click="viewRecruiters()">View Companies</button>
+<button class="report-btn" ng-click="download('companies')">Download Companies</button>
+
+<button class="report-btn" ng-click="viewJobs()">View Jobs</button>
+<button class="report-btn" ng-click="download('jobs')">Download Jobs</button>
+
+</div>
+<div ng-if="reportType=='users'">
+<h3>Jobseekers List</h3>
+<table border="1" class="report-table">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Role</th>
+</tr>
+
+<tr ng-repeat="u in usersReport">
+<td>{{u.user_id}}</td>
+<td>{{u.name}}</td>
+<td>{{u.email}}</td>
+<td>{{u.role}}</td>
+</tr>
+</table>
+</div>
+
+
+<div ng-if="reportType=='recruiters'">
+<h3>Companies List</h3>
+<table border="1" class="report-table">
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+</tr>
+
+<tr ng-repeat="r in recruitersReport">
+<td>{{r.user_id}}</td>
+<td>{{r.name}}</td>
+<td>{{r.email}}</td>
+</tr>
+</table>
+</div>
+
+
+<div ng-if="reportType=='jobs'">
+<h3>Jobs List</h3>
+<table border="1" class="report-table">
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Location</th>
+</tr>
+
+<tr ng-repeat="j in jobsReport">
+<td>{{j.job_id}}</td>
+<td>{{j.title}}</td>
+<td>{{j.location}}</td>
+</tr>
+</table>
+</div>

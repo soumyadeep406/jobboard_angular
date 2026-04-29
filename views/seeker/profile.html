@@ -1,0 +1,101 @@
+<div class="profile-wrapper">
+
+    <div class="profile-card">
+
+        <h2 class="profile-title">Your Profile</h2>
+
+        <!-- ================= BASIC INFO ================= -->
+
+        <div class="profile-section">
+
+            <!-- NAME -->
+            <div class="profile-field">
+                <label>Full Name</label>
+                <input type="text"
+                       ng-model="profile.name"
+                       class="netflix-input"
+                       placeholder="Enter your name">
+            </div>
+
+            <!-- EMAIL (Read Only) -->
+            <div class="profile-field">
+                <label>Email Address</label>
+                <input type="email"
+                       ng-model="profile.email"
+                       class="netflix-input"
+                       readonly>
+            </div>
+
+            <!-- PHONE -->
+            <div class="profile-field">
+                <label>Phone Number</label>
+                <input type="text"
+                       ng-model="profile.phone"
+                       class="netflix-input"
+                       placeholder="Enter your phone number">
+            </div>
+
+            <!-- UPDATE BUTTON -->
+            <button class="btn-update" ng-click="updateProfile()">
+                Update Profile
+            </button>
+
+        </div>
+
+        <hr class="profile-divider">
+
+        <!-- ================= RESUME SECTION ================= -->
+
+        <div class="profile-section">
+
+            <h3 class="profile-subtitle">Resume</h3>
+
+            <!-- Upload Input -->
+            <div class="profile-field">
+                <label>Upload Resume (PDF / DOC / DOCX - Max 2MB)</label>
+                <input type="file"
+                       file-model="resumeFile"
+                       class="netflix-input">
+            </div>
+
+            <!-- Upload Button -->
+            <button class="btn-upload" ng-click="uploadResume()">
+                Upload Resume
+            </button>
+
+            <!-- Resume Preview -->
+            <div class="resume-preview" ng-if="profile.resume">
+
+                <p class="resume-text">Your Current Resume</p>
+
+                <!-- PDF Preview -->
+                <iframe ng-if="profile.resume.endsWith('.pdf')"
+                        ng-src="{{profile.resume}}"
+                        width="100%"
+                        height="450px"
+                        style="border:1px solid #333; margin-top:10px;">
+                </iframe>
+
+                <!-- Resume Actions -->
+                <div class="resume-actions">
+
+                    <a ng-href="{{profile.resume}}"
+                       target="_blank"
+                       class="resume-link">
+                        Download Resume
+                    </a>
+
+                    <button class="btn-delete"
+                            ng-click="deleteResume()">
+                        Remove Resume
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,316 @@
+/* ===== Admin Base ===== */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef1f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Admin Header ===== */
+.admin-header {
+    background: #1f2933;
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 18px;
+}
+
+/* ===== Admin Menu ===== */
+.admin-menu {
+    background: #111827;
+    padding: 10px;
+}
+
+.admin-menu a {
+    color: #ccc;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.admin-menu a:hover {
+    color: #fff;
+}
+
+/* ===== Admin Content ===== */
+.admin-content {
+    padding: 20px;
+}
+
+/* ===== Tables ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* ===== Buttons ===== */
+.btn-approve {
+    background: #28a745;
+}
+
+.btn-block {
+    background: #dc3545;
+}
+
+.btn-approve:hover {
+    background: #218838;
+}
+
+.btn-block:hover {
+    background: #c82333;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+/* USER INFO CELL */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #22c55e;
+    color: #111;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #f3f4f6;
+}
+
+.user-email {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* Hover animation */
+.admin-table tbody tr {
+    transition: 0.25s ease;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #1f2937;
+}
+
+/* Improve blocked text */
+.blocked-text {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #9ca3af;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+
+.pagination-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination-container button {
+    background-color: #1f2937;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    margin: 0 10px;
+    transition: 0.2s;
+}
+
+.pagination-container button:hover:not(:disabled) {
+    background-color: #22c55e;
+}
+
+.pagination-container button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+/* Recruiter Name Column */
+.recruiter-name {
+    color: #22c55e;
+    font-weight: 600;
+}
+
+/* Job Title */
+.job-title {
+    font-weight: 600;
+    color: #f1f5f9;
+}
+
+/* Location */
+.job-location {
+    color: #cbd5e1;
+}
+
+/* Status Styles */
+.status-active {
+    background: #16a34a;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-closed {
+    background: #dc2626;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px 0;
+    color: #94a3b8;
+    font-size: 15px;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+
+/* ===============================
+   ADMIN DASHBOARD
+================================ */
+
+.admin-main-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* FIXED NAV */
+.admin-nav {
+    display: flex;
+    gap: 25px;
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.admin-link {
+    text-decoration: none;
+    color: #f87171;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.admin-link:hover {
+    color: #22c55e;
+}
+
+.admin-divider {
+    border-color: #222;
+    margin-bottom: 30px;
+}
+
+/* DASHBOARD GRID */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+/* CARD STYLE */
+.dashboard-card {
+    background: linear-gradient(145deg, #111, #1a1a1a);
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    transition: 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+/* NUMBER STYLE */
+.card-number {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* CARD COLORS */
+.users-card {
+    border-left: 4px solid #3b82f6;
+}
+
+.jobs-card {
+    border-left: 4px solid #22c55e;
+}
+
+.applications-card {
+    border-left: 4px solid #f97316;
+}
+
+.recruiters-card {
+    border-left: 4px solid #a855f7;
+}
+
+
+
+
+/* ADMIN SUB NAVBAR */
+.admin-subnav {
+    position: sticky;
+    top: 70px; /* below main navbar */
+    background: #111;
+    padding: 15px 30px;
+    display: flex;
+    gap: 30px;
+    border-bottom: 1px solid #222;
+    z-index: 1000;
+}
+
+.admin-subnav a {
+    color: #aaa;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.admin-subnav a:hover {
+    color: #fff;
+}
+
+.active-link {
+    color: #00ff88 !important;
+    border-bottom: 2px solid #00ff88;
+    padding-bottom: 5px;
+}

@@ -1,0 +1,42 @@
+<div ng-include="'views/admin/admin-header.html'"></div>
+
+<h2 class="admin-title">Skills Management</h2>
+
+<div class="skill-add-box">
+    <input type="text" ng-model="newSkill" placeholder="Enter new skill">
+    <button class="report-btn" ng-click="addSkill()">Add Skill</button>
+</div>
+
+<hr>
+
+<div class="skill-list">
+
+    <ul>
+        <li ng-repeat="s in skills track by s.skill_id">
+            {{s.skill_name}}
+        </li>
+    </ul>
+
+    <p ng-if="!skills.length" class="empty-state">
+        No skills found
+    </p>
+
+</div>
+
+<div class="pagination-container">
+
+    <button ng-click="prevSkillPage()" 
+            ng-disabled="skillCurrentPage === 1">
+        Prev
+    </button>
+
+    <span>
+        Page {{skillCurrentPage}} of {{skillTotalPages}}
+    </span>
+
+    <button ng-click="nextSkillPage()" 
+            ng-disabled="skillCurrentPage === skillTotalPages">
+        Next
+    </button>
+
+</div>

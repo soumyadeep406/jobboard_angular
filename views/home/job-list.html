@@ -1,0 +1,68 @@
+<h3 class="job-list-title">Job Listings</h3>
+
+<!-- ===== LOADING ===== -->
+<div ng-if="loading" class="loading-jobs">
+    Loading jobs...
+</div>
+
+<!-- ===== JOB LIST ===== -->
+<div ng-repeat="j in jobs"
+     class="job-card"
+     ng-click="selectJob(j)"
+     ng-class="{'active-job': selectedJob && selectedJob.job_id === j.job_id}">
+
+    <div class="job-card-header">
+
+        <div class="job-title">
+            {{j.title}}
+        </div>
+
+        <!-- ❤️ SAVE BUTTON (ONLY JOB SEEKER) -->
+        <button class="save-btn"
+                ng-if="isJobSeeker()"
+                ng-click="toggleSaveJob(j); $event.stopPropagation();">
+
+            <span ng-if="!j.is_saved">♡</span>
+            <span ng-if="j.is_saved">♥</span>
+
+        </button>
+
+    </div>
+
+    <div class="job-meta">
+        📍 {{j.location}}
+    </div>
+
+    <div class="job-meta">
+        🗓 Posted on {{j.posted_at | date:'mediumDate'}}
+    </div>
+
+</div>
+
+<!-- ===== NO JOBS ===== -->
+<p ng-if="!loading && jobs.length === 0" class="no-jobs">
+    No jobs found
+</p>
+
+<!-- ===== PAGINATION ===== -->
+<div class="pagination-container" ng-if="totalPages > 1">
+
+    <button
+        class="page-btn"
+        ng-click="prevPage()"
+        ng-disabled="currentPage == 1">
+        ← Previous
+    </button>
+
+    <span class="page-info">
+        Page {{currentPage}} of {{totalPages}}
+    </span>
+
+    <button
+        class="page-btn"
+        ng-click="nextPage()"
+        ng-disabled="currentPage == totalPages">
+        Next →
+    </button>
+
+</div>

@@ -1,0 +1,22 @@
+<div ng-if="selectedJob">
+
+    <h2>{{selectedJob.title}}</h2>
+    <p><strong>Location:</strong> {{selectedJob.location}}</p>
+    <p><strong>Description:</strong></p>
+    <p>{{selectedJob.description}}</p>
+
+    <button 
+    ng-if="isJobSeeker()" 
+    ng-click="applyJob()" 
+    class="btn-apply">
+    Apply
+</button>
+
+
+
+
+
+
+</div>
+
+<p ng-if="!selectedJob">Select a job to see details</p>

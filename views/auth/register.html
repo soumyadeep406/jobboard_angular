@@ -1,0 +1,16 @@
+<h2>Register</h2>
+
+<input ng-model="user.name" placeholder="Full Name"><br><br>
+<input ng-model="user.email" placeholder="Email"><br><br>
+<input type="password" ng-model="user.password" placeholder="Password"><br><br>
+
+<select ng-model="user.role">
+    <option value="job_seeker">Job Seeker</option>
+    <option value="recruiter">Recruiter</option>
+</select><br><br>
+
+<button ng-click="registerUser()" class="btn-register">Register</button>
+
+<p>{{message}}</p>
+
+<a href="#!/login">Already have account?</a>

@@ -1,0 +1,83 @@
+<div ng-include="'views/admin/admin-header.html'"></div>
+<h2 class="admin-title jobs-title">
+    All Jobs
+</h2>
+
+<div class="admin-table-wrapper jobs-wrapper">
+
+    <table class="admin-table jobs-table">
+
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Recruiter</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr ng-repeat="j in jobs">
+
+                <!-- Job Title -->
+                <td class="job-title">
+                    {{j.title}}
+                </td>
+
+                <!-- Location -->
+                <td class="job-location">
+                    {{j.location}}
+                </td>
+
+                <!-- Recruiter Name -->
+                <td class="recruiter-name">
+                    {{j.recruiter_name}}
+                </td>
+
+                <!-- Status -->
+                <td>
+                    <span class="job-status"
+                          ng-class="{
+                            'status-active': j.status=='open',
+                            'status-closed': j.status=='closed'
+                          }">
+                        {{j.status | uppercase}}
+                    </span>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <!-- Empty State -->
+    <div ng-if="jobs.length == 0" class="empty-state">
+        🚫 No jobs available.
+    </div>
+
+    <!-- ✅ JOB PAGINATION -->
+    <div class="pagination-container" ng-if="jobTotalPages > 1">
+
+        <button 
+            class="btn-pagination"
+            ng-click="prevJobPage()" 
+            ng-disabled="jobCurrentPage == 1">
+            Previous
+        </button>
+
+        <span class="page-info">
+            Page {{jobCurrentPage}} of {{jobTotalPages}}
+        </span>
+
+        <button 
+            class="btn-pagination"
+            ng-click="nextJobPage()" 
+            ng-disabled="jobCurrentPage == jobTotalPages">
+            Next
+        </button>
+
+    </div>
+
+</div>
